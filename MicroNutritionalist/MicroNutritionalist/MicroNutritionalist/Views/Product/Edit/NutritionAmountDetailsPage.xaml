@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behviors="clr-namespace:MicroNutritionalist.Behaviors"
+             x:Class="MicroNutritionalist.Views.Product.Edit.NutritionAmountDetailsPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <Label Text="Product: " VerticalOptions="Center"/>
+                <Label Text="{Binding Product.Name}" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Label Text="Nutrition: " VerticalOptions="Center"/>
+                <Label Text="{Binding Nutrition.Name}" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Row="5" Orientation="Horizontal">
+                <Label Text="Amount (mg): " VerticalOptions="Center"/>
+                <Entry Text="{Binding Amount.AmountMg}" Keyboard="Numeric" ReturnType="Done" HorizontalOptions="FillAndExpand">
+                    <Entry.Behaviors>
+                        <behviors:NumericValidationBehavior/>
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+
+            <Button Grid.Row="7" HorizontalOptions="CenterAndExpand" Text="Save Changes" Command="{Binding SaveChangesClicked}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

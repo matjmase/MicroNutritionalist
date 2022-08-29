@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MicroNutritionalist.Views.Analytic.Average.AnalyticsAveragePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalOptions="Start" Text="Start Date and Time"/>
+            <DatePicker Grid.Row="1" HorizontalOptions="Center" Date="{Binding Start}"/>
+            <TimePicker Grid.Row="2" HorizontalOptions="Center" Time="{Binding StartTime}"/>
+            <Label Grid.Row="3" HorizontalOptions="Start" Text="End Date and Time"/>
+            <DatePicker Grid.Row="4" HorizontalOptions="Center" Date="{Binding End}"/>
+            <TimePicker Grid.Row="5" HorizontalOptions="Center" Time="{Binding EndTime}"/>
+
+            <StackLayout Grid.Row="6" Orientation="Horizontal">
+                <Label Text="Calories" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{ Binding TotalCalories }" HorizontalOptions="End"/>
+            </StackLayout>
+            <ScrollView Grid.Row="7">
+                <ListView ItemsSource="{Binding NutritionAmounts}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" Text="{ Binding NutritionalName }" HorizontalOptions="StartAndExpand"/>
+                                    <Label VerticalOptions="Center" Text="{ Binding AmountMg }" HorizontalOptions="End"/>
+                                    <Label VerticalOptions="Center" Text=" milligrams" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

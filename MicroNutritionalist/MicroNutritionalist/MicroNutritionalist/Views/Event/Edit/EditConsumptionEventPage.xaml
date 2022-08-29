@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:MicroNutritionalist.Behaviors" xmlns:converters="clr-namespace:MicroNutritionalist.Converters"
+             x:Class="MicroNutritionalist.Views.Event.Edit.EditConsumptionEventPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Command="{Binding SelectProductClicked}" Text="Select Product"/>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <Label Text="Product: "/>
+                <Label Text="{Binding Product.Name}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal">
+                <Label Text="Serving: "/>
+                <Label Text="{Binding Product.ServingDescription}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="6" Orientation="Horizontal" >
+                <Label Text="Serving Proportion: " VerticalOptions="Center"/>
+                <Entry Text="{Binding ConsumptionEvent.Proportion}" HorizontalOptions="FillAndExpand" ReturnType="Done" Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <behaviors:DoubleValidationBehavior/>
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+
+            <DatePicker Date="{Binding ConsumptionEvent.Date}" Grid.Row="8"/>
+
+            <TimePicker Time="{Binding ConsumptionEvent.Time}" Grid.Row="10"/>
+
+            <Button Command="{Binding SaveChangesClicked}" IsVisible="{Binding ProductIsValid}" Grid.Row="12" Text="Save Changes"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
